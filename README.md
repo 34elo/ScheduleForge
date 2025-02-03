@@ -7,4 +7,7 @@
 Сделано на основе кейса от Black Fox: «Регулировка занятости и рабочего времени штатных сотрудников» (сеть кофейн «Black
 Fox»),
 
+Доска проекта - https://www.figma.com/board/wX2rVUEchtCchamo6suJX5/Black-Fox?node-id=0-1&t=fYujuNjgdX6otlul-1
+
+
 P.S Название гпт придумал. Типо составитель расписаний
