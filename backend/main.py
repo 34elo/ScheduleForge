@@ -1,14 +1,19 @@
-from flask import Flask, request, jsonify
+from fastapi import FastAPI
+from pydantic import BaseModel
 
-app = Flask(__name__)
-
-
-@app.route('/')
-def empty():
-    return jsonify({'message': 'Everything is fine)))'})
+app = FastAPI()
 
 
-if __name__ == '__main__':
-    app.run(port=5000, debug=False, host='0.0.0.0')
+class Item(BaseModel):
+    name: str
+    telegram_id: int
 
-# Просто, чтоб не было Hello world))
+
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
+
+
+@app.put("/data/{id}")
+async def put_data(telegram_id: int, data: Item):
+    return
