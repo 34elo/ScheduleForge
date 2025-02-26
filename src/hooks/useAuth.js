@@ -28,7 +28,7 @@ function useAuth() {
                     const userData = {
                         id: 1,
                         name: 'Павел',
-                        role: 'admin',
+                        role: 'manager',
                     };
                     setIsLoggedIn(true);
                     setUser({

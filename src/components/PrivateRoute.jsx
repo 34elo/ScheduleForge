@@ -10,8 +10,8 @@ export default function PrivateRoute({children, allowedRoles}) {
 
     const {isLoggedIn, loading, role} = useAuth();
 
-    console.log(isLoggedIn)
-    console.log(role)
+    console.log('private route - loggedIn - ', isLoggedIn)
+    console.log('private route - role -', role)
 
     if (loading) {
         return <div>Loading...</div>;

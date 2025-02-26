@@ -1,5 +1,5 @@
 import {Button, TextField, Typography} from "@mui/material";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Box} from "@mui/system";
 import useAuth from "../../hooks/useAuth.js";
 import {useNavigate} from "react-router-dom";
@@ -16,25 +16,22 @@ export default function LoginPage() {
         setError(null);
     };
 
+    useEffect(() => {
+        console.log(code, isLoggedIn, role);
+        if (isLoggedIn) {
+            console.log("logged in");
+            if (role === "manager") {
+                navigate("/manager");
+            } else if (role === 'employee') {
+                navigate('/employee');
+            }
+        }
+    }, [code, isLoggedIn, navigate, role]);
+
     const handleLogin = async () => {
         try {
             await login(code);
-            console.log(code, isLoggedIn, role)
-            if (isLoggedIn) {
-                console.log("logged in");
-                if (role === "manager") {
-                    navigate("/manager");
-                } else if (role === 'employee') {
-                    navigate('/employee');
-                } else {
 
-                    setError('Неверный код');
-                }
-
-            } else {
-                console.log('else')
-                setError('Ошибка авторизации.')
-            }
         } catch (err) {
             console.error("Ошибка при авторизации:", err);
             setError("Произошла ошибка при авторизации"); // Обрабатываем ошибки авторизации
