@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import {useState, useEffect, useCallback} from 'react';
 
 function useAuth() {
     // 1. Состояния:
@@ -52,35 +52,53 @@ function useAuth() {
     const login = async (code) => {
         console.log('login called, code:', code); // Добавляем логирование
         try {
-            const response = {
-                token: 123,
-                userData: {
-                    id: 1,
-                    name: 'Павел',
-                    role: 'admin',
+            if (code === 'employee') {
+                const response = {
+                    token: 111,
+                    userData: {
+                        id: 1,
+                        name: 'Павел',
+                        role: 'employee',
+                    }
                 }
-            }
-            console.log('login response:', response); // Добавляем логирование
+                console.log('login response:', response); // Добавляем логирование
 
-            localStorage.setItem('token', response.token);
-            setUser(response.userData);
-            setIsLoggedIn(true);
-            setRole(response.userData.role);
+                localStorage.setItem('token', response.token);
+                setUser(response.userData);
+                setIsLoggedIn(true);
+                setRole(response.userData.role);
+
+            } else if (code === 'manager') {
+                const response = {
+                    token: 333,
+                    userData: {
+                        id: 2,
+                        name: 'Павел',
+                        role: 'manager',
+                    }
+                }
+                console.log('login response:', response); // Добавляем логирование
+
+                localStorage.setItem('token', response.token);
+                setUser(response.userData);
+                setIsLoggedIn(true);
+                setRole(response.userData.role);
+            }
         } catch (error) {
             console.error('Login failed:', error);
-            // ...
+
         }
     };
 
     // 5. Возвращаем значения и функции
-    return [
+    return {
         user,
         isLoggedIn,
         loading,
         role,
         login,
         logout,
-    ];
+    };
 }
 
 export default useAuth;

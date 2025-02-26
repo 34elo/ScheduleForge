@@ -14,33 +14,33 @@ export default function App() {
         return <div>Loading...</div>;  // Отображаем лоадер
     }
 
-    return (<BrowserRouter>
-            <Routes>
-                <Route
-                    path="/"
-                    element={<Navigate to="/login" replace/>}
-                />
-                <Route
-                    path="/login"
-                    element={<LoginPage/>}
-                />
-                <Route
-                    path="/employee"
-                    element={<PrivateRoute allowedRoles={['employee']}>
-                        <EmployeePage/>
-                    </PrivateRoute>}
-                />
-                <Route
-                    path="/manager"
-                    element={<PrivateRoute allowedRoles={['manager']}>
-                        <ManagerPage/>
-                    </PrivateRoute>}
-                />
-                <Route
-                    path="/unauthorized"
-                    element={<Unauthorized/>}
-                />
-            </Routes>
-        </BrowserRouter>);
-
+    return (
+        <BrowserRouter>
+        <Routes>
+            <Route
+                path="/"
+                element={<Navigate to="/login" replace/>}
+            />
+            <Route
+                path="/login"
+                element={<LoginPage/>}
+            />
+            <Route
+                path="/employee"
+                element={<PrivateRoute allowedRoles={['employee']}>
+                    <EmployeePage/>
+                </PrivateRoute>}
+            />
+            <Route
+                path="/manager"
+                element={<PrivateRoute allowedRoles={['manager']}>
+                    <ManagerPage/>
+                </PrivateRoute>}
+            />
+            <Route
+                path="/unauthorized"
+                element={<Unauthorized/>}
+            />
+        </Routes>
+    </BrowserRouter>);
 }
