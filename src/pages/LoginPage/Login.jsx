@@ -49,7 +49,7 @@ export default function LoginPage() {
                     alignItems: 'center', // Центрируем по горизонтали
                     justifyContent: 'center', // Центрируем по вертикали
                     minHeight: '100vh', // Занимаем всю высоту экрана
-                    backgroundColor: '#f0f0f0', // Добавляем цвет фона для примера
+
                 }}
             >
                 <Typography variant="h4" gutterBottom>
@@ -65,7 +65,7 @@ export default function LoginPage() {
                     helperText={error}
                     sx={{marginBottom: 2, width: '300px'}}
                 />
-                <Button variant="contained" onClick={handleLogin}>
+                <Button variant="contained" onClick={handleLogin} sx={{backgroundColor: '#c1c1c1'}}>
                     Войти
                 </Button>
             </Box>
