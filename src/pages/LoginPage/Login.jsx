@@ -17,7 +17,7 @@ export default function LoginPage() {
     };
 
     useEffect(() => {
-        console.log(code, isLoggedIn, role);
+        console.log(isLoggedIn, role);
         if (isLoggedIn) {
             console.log("logged in");
             if (role === "manager") {
@@ -26,7 +26,7 @@ export default function LoginPage() {
                 navigate('/employee');
             }
         }
-    }, [code, isLoggedIn, navigate, role]);
+    }, [isLoggedIn, navigate, role]);
 
     const handleLogin = async () => {
         try {
