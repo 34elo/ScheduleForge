@@ -1,5 +1,6 @@
 import useAuth from "../hooks/useAuth.js";
 import {Navigate} from "react-router-dom";
+import {CircularProgress} from "@mui/material";
 
 
 // eslint-disable-next-line react/prop-types
@@ -14,7 +15,7 @@ export default function PrivateRoute({children, allowedRoles}) {
     console.log('private route - role -', role)
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <CircularProgress />;
     }
 
 

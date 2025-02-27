@@ -25,16 +25,32 @@ function useAuth() {
                 const token = localStorage.getItem('token');
                 console.log('token:', token);
                 if (token) {
-                    const userData = {
-                        id: 1,
-                        name: 'Павел',
-                        role: 'manager',
-                    };
-                    setIsLoggedIn(true);
-                    setUser({
-                        ...userData,
-                    });
-                    setRole(userData.role);
+                    // Запрос на БЕКЕНД о токене
+                    if (token === "333") {
+                        const userData = {
+                            id: 1,
+                            name: 'Павел',
+                            role: 'manager',
+                        }
+                        setIsLoggedIn(true);
+                        setUser({
+                            ...userData,
+                        });
+                        setRole(userData.role);
+                    } else if (token === "111") {
+                        const userData = {
+                            id: 1,
+                            name: 'Павел',
+                            role: 'employee',
+                        }
+                        setIsLoggedIn(true);
+                        setUser({
+                            ...userData,
+                        });
+                        setRole(userData.role);
+                    } else {
+                        console.error('Неправильный токен')
+                    }
                 }
             } catch (error) {
                 console.error('Error in checkAuth:', error); // Добавляем логирование

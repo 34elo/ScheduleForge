@@ -31,9 +31,7 @@ export default function LoginPage() {
     const handleLogin = async () => {
         try {
             await login(code);
-            if (error) {
-                
-            }
+
 
         } catch (err) {
             console.error("Ошибка при авторизации:", err);
