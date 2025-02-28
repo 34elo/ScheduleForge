@@ -1,9 +1,12 @@
-import {Tab} from "@mui/material";
+import {FormControlLabel, IconButton, Modal, Switch, Tab} from "@mui/material";
 import {useState} from "react";
 import TabPanel from "@mui/lab/TabPanel";
 import {Box} from "@mui/system";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
+import TableSchedule from "./TableSchedule.jsx";
+import EditIcon from '@mui/icons-material/Edit';
+import ModalEditSchedule from "./ModalEditSchedule.jsx";
 
 const tabsData = [
     {
@@ -35,58 +38,100 @@ const tabsData = [
     }
 ];
 
+const styleBox = {
+
+    minHeight: '500px',
+    backgroundColor: '#f0f0f0',
+    borderRadius: '20px',
+
+    '& .MuiTab-root': {
+
+        transition: 'opacity 0.3s ease, transform 0.3s ease',
+        opacity: 0.6,
+        transform: 'scale(0.95)',
+
+        '&.Mui-selected': {
+            backgroundColor: '#c1c1c1',
+            color: 'black',
+            borderRadius: "20px",
+            opacity: 1,
+            transform: 'scale(1)',
+        },
+    },
+}
 
 export default function SchedulePage() {
+
     const getTabInfo = () => {
         const selectedTab = tabsData.find(tab => tab.id === value);
         if (selectedTab) {
-            return `${selectedTab.info.address}, ${selectedTab.info.city}, ${selectedTab.info.state}`;
+            return selectedTab.name;
         }
-        return "Выберите интересующую точку";
+        return null;
     }
+
     const [value, setValue] = useState(1);
+    const [period, setPeriod] = useState(true);
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
     function handleChange(e, newValue) {
         setValue(newValue);
     }
 
+    function changePeriod(e, newValue) {
+        console.log('change', e, newValue);
+        setPeriod(newValue);
+    }
 
     return (
-        <Box sx={{flexGrow: 1, bgcolor: 'background.paper', display: 'flex', height: 224}}>
-            <TabContext value={value}>
-                <Box sx={{
-                    '& .MuiTab-root': {
-                        backgroundColor: 'transparent',
-                        transition: 'opacity 0.3s ease, transform 0.3s ease',
-                        opacity: 0.6,
-                        transform: 'scale(0.95)',
+        <>
+            <Box sx={{justifyContent: 'space-between', flexGrow: 1, display: 'flex'}}>
+                <h1 style={{paddingBottom: '20px'}}>{name}
+                    Расписание
+                    <IconButton aria-label="edit" onClick={handleOpen} sx={{margin: '20px'}}>
+                        <EditIcon />
+                    </IconButton>
+                </h1>
 
-                        '&.Mui-selected': {
-                            backgroundColor: '#c1c1c1',
-                            color: 'black',
-                            borderRadius: "20px",
-                            opacity: 1,
-                            transform: 'scale(1)',
-                        },
-                    },
-                }}>
-                    <TabList
-                        onChange={handleChange}
-                        aria-label="lab API tabs example"
-                        orientation="vertical"
-                        indicatorColor="transparent"
-                        color='transparent'
-                        textColor="primary"
-                    >
-                        {tabsData.map((tab) => (
-                            <Tab key={tab.id} label={tab.name} value={tab.id}/>
-                        ))}
-                    </TabList>
-                </Box>
-                <TabPanel value={value} key={value}>
-                    {getTabInfo()}
-                </TabPanel>
-            </TabContext>
-        </Box>
+                <FormControlLabel
+                    control={<Switch checked={period} onChange={changePeriod} color="transparent" />}
+                    label="Расписание на месяц"
+                />
+            </Box>
+            <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <ModalEditSchedule></ModalEditSchedule>
+            </Modal>
+            <Box sx={{flexGrow: 1, backgroundColor: 'white', display: 'flex', height: 224}}>
+
+                <TabContext value={value}>
+                    <Box sx={styleBox}>
+                        <TabList
+                            onChange={handleChange}
+                            aria-label="lab API tabs example"
+                            orientation="vertical"
+                            indicatorColor="transparent"
+                            color='transparent'
+                            textColor="primary"
+                        >
+                            {tabsData.map((tab) => (
+                                <Tab key={tab.id} label={tab.name} value={tab.id}/>
+                            ))}
+                        </TabList>
+                    </Box>
+                    <TabPanel value={value} key={value} sx={{width: '100%', paddingTop: '0px'}}>
+                        <Box style={{backgroundColor: '#f0f0f0', minHeight: '500px', borderRadius: '20px'}}>
+                            <TableSchedule name={getTabInfo()} period={String(period)}></TableSchedule>
+                        </Box>
+                    </TabPanel>
+                </TabContext>
+            </Box>
+        </>
     );
 }
