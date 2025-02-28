@@ -60,7 +60,7 @@ const styleBox = {
     },
 }
 
-export default function SchedulePage() {
+export default function ScheduleMenu() {
 
     const getTabInfo = () => {
         const selectedTab = tabsData.find(tab => tab.id === value);
@@ -70,7 +70,7 @@ export default function SchedulePage() {
         return null;
     }
 
-    const [value, setValue] = useState(1);
+    const [value, setValue] = useState(tabsData.length > 0 ? tabsData[0].id : null  );
     const [period, setPeriod] = useState(true);
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
@@ -106,7 +106,7 @@ export default function SchedulePage() {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <ModalEditSchedule></ModalEditSchedule>
+                <ModalEditSchedule setOpen={setOpen}></ModalEditSchedule>
             </Modal>
             <Box sx={{flexGrow: 1, backgroundColor: 'white', display: 'flex', height: 224}}>
 

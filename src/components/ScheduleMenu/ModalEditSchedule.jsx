@@ -27,7 +27,7 @@ const employees = [
     'kolya'
 ]
 
-export default function ModalEditSchedule() {
+export default function ModalEditSchedule({setOpen}) {
 
     const [selectedDate, setSelectedDate] = useState(dayjs().add(1, 'day'));
 
@@ -41,6 +41,7 @@ export default function ModalEditSchedule() {
     };
 
     function handleEdit() {
+        setOpen(false);
         console.log('Расписание изменено', selectedDate, employee);
     }
 

@@ -8,8 +8,13 @@ import Paper from '@mui/material/Paper';
 
 const data = [
     {date: '20.03.2025', employees: ['Petr', 'Vasya']},
-    {date: '21.03.2025', employees: ['Kolya', 'Dasha']
-}]
+    {date: '21.03.2025', employees: ['Kolya', 'Dasha']},
+    {date: '21.03.2025', employees: ['Kolya', 'Dasha']},
+    {date: '21.03.2025', employees: ['Kolya', 'Dasha']},
+    {date: '21.03.2025', employees: ['Kolya', 'Dasha']},
+    {date: '21.03.2025', employees: ['Kolya', 'Dasha']},
+    {date: '21.03.2025', employees: ['Kolya', 'Dasha']}
+]
 
 // eslint-disable-next-line react/prop-types
 export default function TableSchedule({name, period}) {
@@ -17,7 +22,7 @@ export default function TableSchedule({name, period}) {
     return (
         <>
             <TableContainer component={Paper}
-                            sx={{boxShadow: 'none', minWidth: 650, backgroundColor: '#f0f0f0', borderRadius: '20px', maxHeight: '500px'}}>
+                            sx={{boxShadow: 'none', minWidth: 500, backgroundColor: '#f0f0f0', borderRadius: '20px', maxHeight: '500px'}}>
                 <Table
                     aria-label="simple table">
                     <TableHead>
@@ -36,4 +41,5 @@ export default function TableSchedule({name, period}) {
                     </TableBody>
                 </Table>
             </TableContainer>
+            <h1>{name} {period}</h1>
     </>)}
