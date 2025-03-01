@@ -88,7 +88,7 @@ export default function ScheduleMenu() {
     return (
         <>
             <Box sx={{justifyContent: 'space-between', flexGrow: 1, display: 'flex'}}>
-                <h1 style={{paddingBottom: '20px'}}>{name}
+                <h1 style={{paddingBottom: '20px', margin: 0}}>{name}
                     Расписание
                     <IconButton aria-label="edit" onClick={handleOpen} sx={{margin: '20px'}}>
                         <EditIcon />
@@ -126,7 +126,7 @@ export default function ScheduleMenu() {
                         </TabList>
                     </Box>
                     <TabPanel value={value} key={value} sx={{width: '100%', paddingTop: '0px'}}>
-                        <Box style={{backgroundColor: '#f0f0f0', minHeight: '500px', borderRadius: '20px'}}>
+                        <Box style={{backgroundColor: '#f0f0f0', minHeight: '500px', borderRadius: '20px', width: '100%', minWidth: '500px'}}>
                             <TableSchedule name={getTabInfo()} period={String(period)}></TableSchedule>
                         </Box>
                     </TabPanel>

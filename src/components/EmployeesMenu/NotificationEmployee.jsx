@@ -50,15 +50,19 @@ export default function NotificationEmployee() {
                 justifyContent: 'center', // Центрируем по вертикали
 
             }}>
-                <h2 style={{margin: 0, marginTop: '20px', marginBottom: '10px'}}>Уведомления</h2>
+                <h2 style={{margin: 0, marginTop: '10px', marginBottom: '10px'}}>Уведомления</h2>
                 <TextField
+                    sx={{
+
+                        width: '250px',
+                    }}
                     size="small"
                     label="Текст"
                     defaultValue={text}
                     onChange={handleChangeText}
 
                 />
-                <FormControl sx={{m: 1, minWidth: '100px'}}>
+                <FormControl sx={{m: 1, width: '250px'}}>
                     <InputLabel id="demo-multiple-chip-label" variant='outlined'>Имена</InputLabel>
                     <Select
                         sx={{
