@@ -1,4 +1,4 @@
-import useAuth from "../hooks/useAuth.js";
+import useAuth from "../../../hooks/useAuth.js";
 import {Navigate} from "react-router-dom";
 import {CircularProgress} from "@mui/material";
 

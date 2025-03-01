@@ -4,18 +4,12 @@ import {Card, CardActionArea, CardContent, Typography} from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 
 export default function CardsEmployees({cards, selectedCard, setSelectedCard, setAddEmployeeCards}) {
-    function handleCardClick(id) {
+    function handleAddEmployeeCard(id) {
         setSelectedCard(id);
         setAddEmployeeCards(false);
     }
 
-    function handleAddEmployeeClick() {
-        setSelectedCard(-1); // Выделение кнопки добавления
-        setAddEmployeeCards(true);
-    }
-
-    return (
-        <>
+    return (<>
             <h2 style={{paddingBottom: "10px", margin: 0}}>Информация о сотруднике</h2>
             <Box
                 sx={{
@@ -25,28 +19,23 @@ export default function CardsEmployees({cards, selectedCard, setSelectedCard, se
                     gap: 2,
                 }}
             >
-                {cards.map((card) => (
-                    <Card
-                        key={card.id}
-                        sx={{
-                            borderRadius: "20px",
-                            boxShadow: "none",
-                            backgroundColor: selectedCard === card.id ? "action.selected" : "white",
-                        }}
-                    >
+                {cards.map((card) => (<Card key={card.id} sx={{borderRadius: "20px", boxShadow: "none",}}>
                         <CardActionArea
-                            onClick={() => handleCardClick(card.id)}
+                            onClick={() => handleAddEmployeeCard(card.id)}
+                            data-active={selectedCard === card.id ? "" : undefined}
                             sx={{
-                                height: "100%",
-                                "&:hover": {backgroundColor: "action.selectedHover"},
+                                height: "100%", "&[data-active]": {
+                                    backgroundColor: "action.selected", "&:hover": {
+                                        backgroundColor: "action.selectedHover",
+                                    },
+                                },
                             }}
                         >
                             <CardContent sx={{height: "100%"}}>
                                 <Typography>{card.title}</Typography>
                             </CardContent>
                         </CardActionArea>
-                    </Card>
-                ))}
+                    </Card>))}
                 <Card
                     sx={{
                         borderRadius: "20px",
@@ -57,18 +46,22 @@ export default function CardsEmployees({cards, selectedCard, setSelectedCard, se
                         justifyContent: "center",
                         transition: "background-color 0.3s ease",
                         boxShadow: "none",
-                        backgroundColor: selectedCard === -1 ? "action.selected" : "white",
                     }}
                 >
                     <CardActionArea
-                        onClick={handleAddEmployeeClick}
+                        onClick={() => setAddEmployeeCards(true)}
+                        data-active={selectedCard === -1 ? "" : undefined}
                         sx={{
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
                             width: "100%",
                             height: "100%",
-                            "&:hover": {backgroundColor: "action.selectedHover"},
+                            "&[data-active]": {
+                                backgroundColor: "action.selected", "&:hover": {
+                                    backgroundColor: "action.selectedHover",
+                                },
+                            },
                         }}
                     >
                         <CardContent sx={{display: "flex", justifyContent: "center", alignItems: "center", padding: 0}}>
@@ -77,6 +70,5 @@ export default function CardsEmployees({cards, selectedCard, setSelectedCard, se
                     </CardActionArea>
                 </Card>
             </Box>
-        </>
-    );
+        </>);
 }

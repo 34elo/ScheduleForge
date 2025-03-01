@@ -3,18 +3,7 @@ import {Button, Chip, FormControl, InputLabel, MenuItem, OutlinedInput, Select, 
 import {Box} from "@mui/system";
 
 
-const names = [
-    'Oliver Hansen',
-    'Van Henry',
-    'April Tucker',
-    'Ralph Hubbard',
-    'Omar Alexander',
-    'Carlos Abbott',
-    'Miriam Wagner',
-    'Bradley Wilkerson',
-    'Virginia Andrews',
-    'Kelly Snyder',
-];
+const names = ['Oliver Hansen', 'Van Henry', 'April Tucker', 'Ralph Hubbard', 'Omar Alexander', 'Carlos Abbott', 'Miriam Wagner', 'Bradley Wilkerson', 'Virginia Andrews', 'Kelly Snyder',];
 
 
 export default function NotificationEmployee() {
@@ -25,9 +14,7 @@ export default function NotificationEmployee() {
         const {
             target: {value},
         } = event;
-        setPersonName(
-            typeof value === 'string' ? value.split(',') : value,
-        );
+        setPersonName(typeof value === 'string' ? value.split(',') : value,);
     };
 
     function handleChangeText(e) {
@@ -41,8 +28,7 @@ export default function NotificationEmployee() {
     }
 
     console.log(personName);
-    return (
-        <>
+    return (<>
             <Box sx={{
                 display: 'flex', // Используем Flexbox
                 flexDirection: 'column', // Располагаем элементы друг под другом
@@ -53,8 +39,7 @@ export default function NotificationEmployee() {
                 <h2 style={{margin: 0, marginTop: '10px', marginBottom: '10px'}}>Уведомления</h2>
                 <TextField
                     sx={{
-
-                        width: '250px',
+                        maxWidth: '90%', width: '250px',
                     }}
                     size="small"
                     label="Текст"
@@ -62,12 +47,11 @@ export default function NotificationEmployee() {
                     onChange={handleChangeText}
 
                 />
-                <FormControl sx={{m: 1, width: '250px'}}>
+                <FormControl sx={{m: 1, width: '250px', maxWidth: '90%'}}>
                     <InputLabel id="demo-multiple-chip-label" variant='outlined'>Имена</InputLabel>
                     <Select
                         sx={{
-                            maxHeight: '100%',
-                            overflow: 'scroll',
+                            maxHeight: '90%', overflow: 'scroll',
 
                         }}
 
@@ -78,28 +62,22 @@ export default function NotificationEmployee() {
                         value={personName}
                         onChange={handleChange}
                         input={<OutlinedInput id="select-multiple-chip" label="Chip"/>}
-                        renderValue={(selected) => (
-                            <Box sx={{display: 'flex', flexWrap: 'wrap', gap: 0.5}}>
-                                {selected.map((value) => (
-                                    <Chip key={value} label={value}/>
-                                ))}
-                            </Box>
-                        )}
+                        renderValue={(selected) => (<Box sx={{display: 'flex', flexWrap: 'wrap', gap: 0.5}}>
+                                {selected.map((value) => (<Chip key={value} label={value}/>))}
+                            </Box>)}
                     >
-                        {names.map((name) => (
-                            <MenuItem
+                        {names.map((name) => (<MenuItem
                                 key={name}
                                 value={name}
                             >
                                 {name}
-                            </MenuItem>
-                        ))}
+                            </MenuItem>))}
                     </Select>
                 </FormControl>
-                <Button variant="contained" onClick={sendNotification} sx={{backgroundColor: '#c1c1c1'}}>
+                <Button variant="contained" onClick={sendNotification}
+                        sx={{backgroundColor: '#c1c1c1', marginBottom: '10px'}}>
                     Отправить
                 </Button>
             </Box>
-        </>
-    )
+        </>)
 }

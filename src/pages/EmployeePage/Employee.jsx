@@ -4,10 +4,10 @@ import TabContext from "@mui/lab/TabContext";
 import Box from "@mui/material/Box";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
-import ScheduleMenu from "../../components/Manager/ScheduleMenu/ScheduleMenu.jsx";
-import EmployeesManagerMenu from "../../components/Manager/EmployeesMenu/EmployeesManagerMenu.jsx";
 import PerosnalAccountMenu from "../../components/General/PerosnalAccountMenu/PerosnalAccountMenu.jsx";
-import ReportsMenu from "../../components/Manager/ReportsMenu/ReportsMenu.jsx";
+import ScheduleMenuEmployee from "../../components/Employee/ScheduleMenu/ScheduleMenu.jsx";
+import MyWorkMenu from "../../components/Employee/MyWorkMenu/MyWorkMenu.jsx";
+import AdminsMenu from "../../components/Employee/AdminsMenu/AdminsMenu.jsx";
 
 const stylesTabList = {
     display: 'flex',
@@ -38,7 +38,7 @@ const stylesTabList = {
     }
 };
 
-export default function ManagerPage() {
+export default function Employee() {
     const [value, setValue] = useState("1");
 
     function handleChange(e, newValue) {
@@ -59,7 +59,7 @@ export default function ManagerPage() {
                         display: 'none'
                     }
                 }}>
-                    <h3 style={{margin: 0}}>Manager Menu</h3>
+                    <h3 style={{margin: 0}}>Employee Menu</h3>
                     <TabContext value={value}>
                         <TabList
                             onChange={handleChange}
@@ -68,8 +68,8 @@ export default function ManagerPage() {
                             sx={stylesTabList}
                         >
                             <Tab label="Расписание" value="1"/>
-                            <Tab label="Отчеты" value="2"/>
-                            <Tab label="Сотрудники" value="3"/>
+                            <Tab label="Моя работа" value="2"/>
+                            <Tab label="Администраторы" value="3"/>
                             <Tab label="Личный кабинет" value="4"/>
                         </TabList>
                     </TabContext>
@@ -78,19 +78,19 @@ export default function ManagerPage() {
                     <TabContext value={value}>
 
                         <TabPanel value="1" style={{padding: 0}}>
-                            <ScheduleMenu/>
+                            <ScheduleMenuEmployee></ScheduleMenuEmployee>
                         </TabPanel>
 
                         <TabPanel value="2" style={{padding: 0}}>
-                            <ReportsMenu />
+                            <MyWorkMenu></MyWorkMenu>
                         </TabPanel>
 
                         <TabPanel value="3" style={{padding: 0}}>
-                            <EmployeesManagerMenu/>
+                            <AdminsMenu></AdminsMenu>
                         </TabPanel>
 
                         <TabPanel value="4" style={{padding: 0}}>
-                            <PerosnalAccountMenu />
+                            <PerosnalAccountMenu name='name'></PerosnalAccountMenu>
                         </TabPanel>
                     </TabContext>
                 </Box>
@@ -124,8 +124,8 @@ export default function ManagerPage() {
                             }}
                         >
                             <Tab label="📅" value="1" title="Расписание"/>
-                            <Tab label="📊" value="2" title="Отчеты"/>
-                            <Tab label="👥" value="3" title="Сотрудники"/>
+                            <Tab label="1" value="2" title="Моя работа"/>
+                            <Tab label="2" value="3" title="Администраторы"/>
                             <Tab label="👤" value="4" title="Личный кабинет"/>
                         </TabList>
                     </TabContext>
