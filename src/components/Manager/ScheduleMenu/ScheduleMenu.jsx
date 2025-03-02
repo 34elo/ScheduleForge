@@ -4,9 +4,9 @@ import TabPanel from "@mui/lab/TabPanel";
 import {Box} from "@mui/system";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
-import TableSchedule from "../../General/TableSchedule.jsx";
 import EditIcon from '@mui/icons-material/Edit';
 import ModalEditSchedule from "./ModalEditSchedule.jsx";
+import TableSchedule from "../../General/ScheduleMenu/TableSchedule.jsx";
 
 const tabsData = [
     {

@@ -90,7 +90,7 @@ export default function ManagerPage() {
                         </TabPanel>
 
                         <TabPanel value="4" style={{padding: 0}}>
-                            <PerosnalAccountMenu />
+                            <PerosnalAccountMenu name='name'/>
                         </TabPanel>
                     </TabContext>
                 </Box>

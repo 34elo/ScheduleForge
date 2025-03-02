@@ -5,7 +5,6 @@ import useAuth from "./hooks/useAuth.js";
 import PrivateRoute from "./components/Manager/UtilsComponents/PrivateRoute.jsx";
 import ManagerPage from "./pages/ManagerPage/Manager.jsx";
 import EmployeePage from "./pages/EmployeePage/Employee.jsx";
-import Unauthorized from "./pages/UnauthorizedPage/Unauthorized.jsx";
 
 export default function App() {
     const {loading} = useAuth();
@@ -37,10 +36,7 @@ export default function App() {
                     <ManagerPage/>
                 </PrivateRoute>}
             />
-            <Route
-                path="/unauthorized"
-                element={<Unauthorized/>}
-            />
+
         </Routes>
     </BrowserRouter>);
 }

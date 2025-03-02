@@ -4,7 +4,7 @@ import TabPanel from "@mui/lab/TabPanel";
 import {Box} from "@mui/system";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
-import TableSchedule from "../../General/TableSchedule.jsx";
+import TableSchedule from "../../General/ScheduleMenu/TableSchedule.jsx";
 
 const tabsData = [{
     id: '1', name: 'Point 1', info: {

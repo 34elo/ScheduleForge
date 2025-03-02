@@ -1,6 +1,6 @@
 import {Box} from "@mui/system";
 import {Button} from "@mui/material";
-import React, {useState} from "react";
+import {useState} from "react";
 import SelectAny from "./SelectAny.jsx";
 import Paragraph from "../../Manager/UtilsComponents/Paragraph.jsx";
 

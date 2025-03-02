@@ -1,7 +1,6 @@
 import {Box} from "@mui/system";
 import {Card, CardActionArea, CardContent, Typography} from "@mui/material";
 
-import React from "react";
 
 export default function CardsAdmins({cards, selectedCard, setSelectedCard}) {
     function handleSelect(id) {
